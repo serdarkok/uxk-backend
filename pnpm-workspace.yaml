@@ -1,0 +1,4 @@
+ignoredBuiltDependencies:
+  - '@nestjs/core'
+  - es5-ext
+  - unrs-resolver
