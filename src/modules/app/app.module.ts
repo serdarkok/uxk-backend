@@ -4,6 +4,7 @@ import { AppService } from './app.service';
 import { ConfigModule } from '@nestjs/config';
 import { SequelizeModule } from '@nestjs/sequelize';
 import { LocationModule } from '../location/location.module';
+import { CategoryModule } from '../category/category.module';
 
 @Module({
   imports: [
@@ -24,6 +25,7 @@ import { LocationModule } from '../location/location.module';
 
     }),
     LocationModule,
+    CategoryModule,
   ], 
   controllers: [AppController],
   providers: [AppService],

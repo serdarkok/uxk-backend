@@ -17,7 +17,7 @@ async function bootstrap() {
 
   // Swagger configuration
   const config = new DocumentBuilder()
-    .setTitle('Shipping API')
+    .setTitle('UXKraft Shipping API')
     .setDescription('API documentation for shipping management system')
     .setVersion('1.0')
     .build();
