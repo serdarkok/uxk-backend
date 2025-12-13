@@ -6,6 +6,7 @@ import { SequelizeModule } from '@nestjs/sequelize';
 import { LocationModule } from '../location/location.module';
 import { CategoryModule } from '../category/category.module';
 import { ItemModule } from '../item/item.module';
+import { VendorModule } from '../vendor/vendor.module';
 
 @Module({
   imports: [
@@ -28,6 +29,7 @@ import { ItemModule } from '../item/item.module';
     LocationModule,
     CategoryModule,
     ItemModule,
+    VendorModule,
   ], 
   controllers: [AppController],
   providers: [AppService],
