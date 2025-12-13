@@ -4,7 +4,7 @@ import { ApiPropertyOptional } from '@nestjs/swagger';
 export class UpdateCategoryDto {
   @ApiPropertyOptional({
     description: 'Category name',
-    example: 'Electronics',
+    example: 'Drapery',
   })
   @IsString()
   @IsOptional()

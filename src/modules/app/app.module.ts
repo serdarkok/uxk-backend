@@ -5,6 +5,7 @@ import { ConfigModule } from '@nestjs/config';
 import { SequelizeModule } from '@nestjs/sequelize';
 import { LocationModule } from '../location/location.module';
 import { CategoryModule } from '../category/category.module';
+import { ItemModule } from '../item/item.module';
 
 @Module({
   imports: [
@@ -26,6 +27,7 @@ import { CategoryModule } from '../category/category.module';
     }),
     LocationModule,
     CategoryModule,
+    ItemModule,
   ], 
   controllers: [AppController],
   providers: [AppService],
