@@ -7,6 +7,7 @@ import { LocationModule } from '../location/location.module';
 import { CategoryModule } from '../category/category.module';
 import { ItemModule } from '../item/item.module';
 import { VendorModule } from '../vendor/vendor.module';
+import { ShipModule } from '../ship/ship.module';
 
 @Module({
   imports: [
@@ -30,6 +31,7 @@ import { VendorModule } from '../vendor/vendor.module';
     CategoryModule,
     ItemModule,
     VendorModule,
+    ShipModule,
   ], 
   controllers: [AppController],
   providers: [AppService],
