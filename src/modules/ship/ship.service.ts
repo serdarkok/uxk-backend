@@ -28,7 +28,7 @@ export class ShipService {
       include: [
         {
           model: Item,
-          attributes: ['id', 'name'],
+          attributes: ['id', 'name', 'spec', 'price', 'description', 'markup', 'unit'],
         },
         {
           model: Location,
