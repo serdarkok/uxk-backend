@@ -25,6 +25,7 @@ export class ShipService {
 
   async findAll(): Promise<Ship[]> {
     return await this.shipModel.findAll({
+      order: [['itemId', 'asc']],
       include: [
         {
           model: Item,
@@ -181,6 +182,7 @@ export class ShipService {
   }
 
   async bulkUpdate(bulkUpdateShipDto: BulkUpdateShipDto): Promise<{ updated: number }> {
+    console.log(bulkUpdateShipDto);
     const { ids, fields } = bulkUpdateShipDto;
     
     const [affectedCount] = await this.shipModel.update(fields, {
