@@ -1,5 +1,6 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/sequelize';
+import { Op } from 'sequelize';
 import { Ship } from './ship.model';
 import { Item } from '../item/item.model';
 import { Location } from '../location/location.model';
@@ -164,6 +165,43 @@ export class ShipService {
         {
           model: Item,
           attributes: ['id', 'name'],
+        },
+        {
+          model: Location,
+          attributes: ['id', 'name'],
+        },
+        {
+          model: Category,
+          attributes: ['id', 'name'],
+        },
+        {
+          model: Vendor,
+          attributes: ['id', 'name'],
+        },
+      ],
+    });
+  }
+
+  async search(query: string): Promise<Ship[]> {
+    if (!query || query.trim() === '') {
+      return await this.findAll();
+    }
+
+    const searchTerm = `%${query}%`;
+
+    return await this.shipModel.findAll({
+      order: [['itemId', 'asc']],
+      include: [
+        {
+          model: Item,
+          attributes: ['id', 'name', 'spec', 'price', 'description', 'markup', 'unit'],
+          where: {
+            [Op.or]: [
+              { name: { [Op.iLike]: searchTerm } },
+              { spec: { [Op.iLike]: searchTerm } },
+            ],
+          },
+          required: true,
         },
         {
           model: Location,

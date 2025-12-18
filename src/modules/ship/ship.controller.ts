@@ -8,12 +8,14 @@ import {
   Delete,
   HttpCode,
   HttpStatus,
+  Query,
 } from '@nestjs/common';
 import {
   ApiTags,
   ApiOperation,
   ApiResponse,
   ApiParam,
+  ApiQuery,
 } from '@nestjs/swagger';
 import { ShipService } from './ship.service';
 import { CreateShipDto } from './dto/create-ship.dto';
@@ -45,6 +47,22 @@ export class ShipController {
   @ApiResponse({ status: 400, description: 'Bad Request.' })
   bulkUpdate(@Body() bulkUpdateShipDto: BulkUpdateShipDto) {
     return this.shipService.bulkUpdate(bulkUpdateShipDto);
+  }
+
+  @Get('search')
+  @ApiOperation({ summary: 'Search ships by item name, spec, or item ID (case-insensitive)' })
+  @ApiQuery({
+    name: 'q',
+    description: 'Search query for item name, spec, or item ID (case-insensitive)',
+    required: true,
+    example: 'Curtain',
+  })
+  @ApiResponse({
+    status: 200,
+    description: 'Return ships matching the search query (case-insensitive).',
+  })
+  search(@Query('q') query: string) {
+    return this.shipService.search(query);
   }
 
   @Get()
