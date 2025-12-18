@@ -21,11 +21,16 @@ import { ShipModule } from '../ship/ship.module';
       password: process.env.DATABASE_PASSWORD,
       host: process.env.DATABASE_HOST,
       port: parseInt(process.env.DATABASE_PORT ?? '5432'),
+      dialectOptions: {
+        ssl: {
+          require: false,
+          rejectUnauthorized: false,
+        },
+      },
       dialect: 'postgres',
       autoLoadModels: true,
       synchronize: true,
       logging: false,
-
     }),
     LocationModule,
     CategoryModule,
